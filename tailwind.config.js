@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        body: ["Fira Sans"]
+      },
       colors: {
         'text': 'rgb(235, 233, 252)',
         'background': 'rgb(14, 14, 17)',
@@ -25,9 +28,7 @@ export default {
           '950': '#0a290b',
         },
       },
-      fontFamily: {
-        body: ["Fira Sans"]
-      }
+
 
     },
   },

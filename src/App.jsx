@@ -1,12 +1,13 @@
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
-    <main style={{minHeight: "100vh"}} className="bg-background">
+    <AuthProvider>
       <Register></Register>
-    </main>
+    </AuthProvider>
   );
 }
 
