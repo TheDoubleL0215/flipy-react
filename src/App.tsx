@@ -4,10 +4,9 @@ import Register from "./components/Register";
 
 function App() {
   return (
-    <>
-        <Login></Login>
-    </>
-
+    <main style={{minHeight: "100vh"}} className="bg-background">
+      <Register></Register>
+    </main>
   );
 }
 

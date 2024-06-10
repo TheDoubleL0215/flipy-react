@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 export default function Register() {
+
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  const rePasswordRef = useRef<HTMLInputElement>(null)
+
+
   return (
     <html className="font-body wh-full">
       <body className="wh-full">
@@ -13,7 +19,7 @@ export default function Register() {
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <div className="flex gap-4 items-center">
                   <div className="bg-secondary p-3 rounded-full">
-                    <img src="src/assets/icons/user.svg" width={32} alt="" />
+                    <img src="src/assets/icons/user-plus.svg" width={32} alt="" />
                   </div>
                   <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                     Regisztrálj egy új fiókot!
@@ -30,6 +36,7 @@ export default function Register() {
                       id="email"
                       className="border-gray-300 bg-secondary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
                       placeholder="név@email.com"
+                      ref={emailRef}
                     />
                   </div>
                   <div>
@@ -41,6 +48,7 @@ export default function Register() {
                       name="password"
                       id="password"
                       placeholder="••••••••"
+                      ref={passwordRef}
                       className="border-gray-300 bg-secondary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
                     />
                   </div>
@@ -53,6 +61,7 @@ export default function Register() {
                       name="password"
                       id="password"
                       placeholder="••••••••"
+                      ref = {rePasswordRef}
                       className="border-gray-300 bg-secondary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
                     />
                   </div>
@@ -60,7 +69,7 @@ export default function Register() {
                     type="submit"
                     className="w-full text-black bg-primary-500 hover:shadow-md focus:ring-primary-300 text-md rounded-lg px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 hover:shadow transition duration-150 focus:ring-primary-800"
                   >
-                    Bejelentkezés
+                    Regisztrálás
                   </button>
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-medium text-text">
