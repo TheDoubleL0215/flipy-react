@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { TriangleAlert } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const emailRef = useRef();
@@ -8,20 +10,22 @@ export default function Register() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (passwordRef.current.value !== rePasswordRef.current.value) {
-      return setError("Passwords do not match");
+      return setError("A jelszavak nem egyeznek!");
     }
 
     try {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/")
     } catch (e) {
-      setError("Failed to create an account" + e);
+      setError("Failed to create an account " + e);
     }
 
     setLoading(false);
@@ -44,7 +48,8 @@ export default function Register() {
               </h1>
             </div>
             {error && (
-              <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+              <div className="p-4 flex gap-3 items-center text-sm text-red-400 border-red-400 border-2 rounded-lg" role="alert">
+                <TriangleAlert color="rgb(248 113 113)" />
                 <span className="font-medium">{error}</span>
               </div>
             )}
@@ -95,16 +100,9 @@ export default function Register() {
               >
                 Regisztrálás
               </button>
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-text">
-                  Van már fiókod?{" "}
-                  <a
-                    href="#"
-                    className="text-sm font-bold hover:text-primary-500 transition-all duration-150 text-text"
-                  >
-                    Jelentkezz be!
-                  </a>
-                </p>
+              <div className="flex justify-end items-center gap-2">
+                <p className="text-sm font-medium text-text">Van már fiókod?</p>
+                <Link to="/login" className="text-sm font-bold hover:text-primary-500 transition-all duration-150 text-text">Jelentkezz be!</Link>
               </div>
               <button className="px-4 py-2 border justify-center w-full flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
                 <img
