@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { TriangleAlert } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { setDoc } from "firebase/firestore";
+
 
 export default function Register() {
   const emailRef = useRef();

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { TriangleAlert } from 'lucide-react';
 
 export default function Login() {
   const emailRef = useRef();
@@ -9,6 +10,12 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
+
+  function translateErrorCode(errorCode) {
+    if (errorCode == "auth/invalid-credential") {
+      return "Helytelen felhasználónév, vagy jelszó!"
+    }
+  }
 
 
   async function handleSubmit(e) {
@@ -20,6 +27,8 @@ export default function Login() {
       await login(emailRef.current.value, passwordRef.current.value);
       navigate("/")
     } catch (e) {
+      setError(e.code)
+      console.log(e.code)
       setError("Failed to sign in" + e);
     }
 
@@ -57,6 +66,12 @@ export default function Login() {
                 Jelentkezz be a fiókodba!
               </h1>
             </div>
+            {error && (
+              <div className="p-4 flex gap-3 items-center text-sm text-red-400 border-red-400 border-2 rounded-lg" role="alert">
+                <TriangleAlert color="rgb(248 113 113)" />
+                <span className="font-medium">{error}</span>
+              </div>
+            )}
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="block mb-2 text-sm font-medium text-white">
