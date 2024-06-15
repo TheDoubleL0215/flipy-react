@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../firebase.jsx";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signInWithEmailAndPassword, signOut, getAdditionalUserInfo } from "firebase/auth";
+import { auth, db } from "../firebase.jsx";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -12,8 +13,18 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true)
 
+  async function createFirestoreUserInstance(credentials) {
+    const userDoc = doc(collection(db, 'users'), credentials.user.uid);
+    return setDoc(userDoc, {
+      username: credentials.user.email,
+      location: "hu"
+    });
+  }
+
   function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password).then(cred => {
+      createFirestoreUserInstance(cred)
+    });
   }
 
   function login(email, password) {
@@ -25,7 +36,11 @@ export function AuthProvider({ children }) {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result)
+        const details = getAdditionalUserInfo(result)
+
+        console.log(result);
+        console.log(details)
+
       }).catch((error) => {
         console.log(error)
       });

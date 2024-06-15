@@ -56,10 +56,10 @@ export default function Login() {
         <div className="py-5">
           <img src="src/assets/header.svg" width={400} alt="" />
         </div>
-        <div className="w-full rounded-lg justify-center shadow border md:mt-0 sm:max-w-lg xl:p-0 bg-tertitary border-neutral-700">
+        <div className="w-full rounded-lg justify-center shadow border md:mt-0 sm:max-w-lg xl:p-0 bg-secondary border-stone-800">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <div className="flex gap-4 items-center">
-              <div className="bg-secondary p-3 rounded-full">
+              <div className="bg-tertitary border border-neutral-700 p-3 rounded-full">
                 <img src="src/assets/icons/user.svg" width={32} alt="" />
               </div>
               <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
@@ -82,7 +82,7 @@ export default function Login() {
                   name="email"
                   id="email"
                   ref={emailRef}
-                  className="border-gray-300 bg-secondary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
+                  className="border-neutral-700 border bg-tertitary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
                   placeholder="név@email.com"
                 />
               </div>
@@ -96,12 +96,12 @@ export default function Login() {
                   id="password"
                   ref={passwordRef}
                   placeholder="••••••••"
-                  className="border-gray-300 bg-secondary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
+                  className="border-neutral-700 border bg-tertitary sm:text-sm rounded-lg block w-full p-2.5 bg-gray-70 placeholder-gray-400 text-white transition-all duration-150"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full text-black bg-primary-500 hover:shadow-md focus:ring-primary-300 text-md rounded-lg px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 hover:shadow transition duration-150 focus:ring-primary-800"
+                className="w-full text-black bg-primary-600 hover:shadow-md focus:ring-primary-300 text-md rounded-lg px-5 py-2.5 text-center hover:bg-primary-700 hover:shadow transition duration-150 focus:ring-primary-800"
               >
                 Bejelentkezés
               </button>
@@ -119,7 +119,7 @@ export default function Login() {
 
               </div>
               <button
-                className="px-4 py-2 border justify-center w-full flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150"
+                className="px-4 py-2.5 border justify-center w-full flex gap-2 border-neutral-700 rounded-lg text-slate-200 hover:border-primary-600 hover:shadow transition duration-150"
                 onClick={handleGoogleLogin}
               >
                 <img

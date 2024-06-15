@@ -12,8 +12,9 @@ export default {
       colors: {
         'text': 'rgb(235, 233, 252)',
         'background': 'rgb(14, 14, 17)',
-        'secondary': 'rgb(39, 39, 42)',
-        'tertitary': 'rgb(24, 24, 27)',
+        'tertitary': 'rgb(39, 39, 42)',
+        'secondary': 'rgb(24, 24, 27)',
+        'error': 'rgb(248 113 113)',
         'primary': {
           '50': '#f3fbf2',
           '100': '#e1f8e0',
