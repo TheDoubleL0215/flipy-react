@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import DashboardCard from '../components/DashboardCard';
 import { useAuth } from "../contexts/AuthContext"
-import { fetchDecksFromFirestore } from '../services/firestore.jsx';
+import { fetchDecksFromFirestore } from '../../services/firestore.jsx';
 
 export default function Dashboard() {
     const { currentUser } = useAuth();

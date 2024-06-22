@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import NavBar from '../components/NavBar';
 import NewDeckCard from '../components/NewDeckCard.jsx';
 import { Plus } from "lucide-react";
-import { commitDeckToFirestore } from "../services/firestore"
+import { commitDeckToFirestore } from "../../services/firestore"
 import { useAuth } from "../contexts/AuthContext"
 import { useNavigate } from 'react-router-dom';
 
